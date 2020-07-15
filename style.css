@@ -1,0 +1,982 @@
+@charset 'utf-8';
+body {
+    margin: 0;
+    padding: 0;
+    /* background: #FEF7D5; */
+    color: #333;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+}
+
+.site-width {
+    margin: 0 auto;
+    width: 75%;
+}
+.page-1colum #main {
+    width: 100%;
+}
+.page-2colum #main {
+    width: 74%;
+}
+.header-title {
+    font-family: 'Noto Serif JP', serif;
+}
+
+/* お気に入りアイコン */
+.icn-like{
+    float:right;
+    color: #ddd;
+}
+.icn-like:hover{
+    cursor: pointer;
+}
+.icn-like.active{
+    float:right;
+    color: #fe8a8b;
+}
+
+/* ヘッダー
+---------------------*/
+.main-nav {
+    display: flex;
+    text-transform: uppercase;
+    list-style: none;
+    margin-top: 30px;
+}
+.main-nav li {
+    padding-right: 0.7rem;
+}
+.main-nav a {
+    padding: 0.7rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, .5);
+}
+.main-nav a:hover {
+    text-decoration: underline;
+    color: black;
+}
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f5f5;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .16);
+    /* ヘッダーを固定するスタイリング */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.page-header {
+    /* パーセントの数値が微妙だが、フルサイズで左右に140pxの空白をしたかったのでこうなりました */
+    /* padding-left: 9.723%;
+    padding-right: 9.723%; */
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+}
+.page-header > h1 > a {
+    color: #333;
+}
+.header-smartphone {
+    display: none;
+}
+.nav-icon {
+    width: 70px;
+    height: 70px;
+    /* padding-left: 39.2px; */
+    margin-left: 39.2px;
+    border-radius: 50%;
+
+}
+.nav-user {
+    margin-top: 5px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.nav-user p {
+    margin-top: 25px;
+    margin-left: 20px;
+    margin-left: 13px;
+    color: #ddd;
+}
+.header-menu-text {
+    position: relative;
+    top: 55px;
+    right: 8px;
+    font-size: 10px;
+    z-index: 3;
+}
+/* フッター
+---------------------*/
+footer {
+    margin-top: 50px;
+    padding: 15px;
+    background: #f6f5f5;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .16);
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+footer a {
+    color: #333;
+}
+/* フォント
+---------------------*/
+.num {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* 大きな背景画像
+---------------------*/
+.big-bg {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+#home {
+    background-image: url();
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+/* ホーム
+---------------------*/
+.home-content {
+    position: absolute;
+    top: 106.36px;  /*ヘッダーのところを無視するようにする*/
+    margin-top: 10%;
+    /* text-align: center; */
+    /* width: 100%; */
+    border-radius: 0%;
+    background: rgba(204, 204, 204, 0.3);
+    margin-left: 12.5%;
+    /* paddingだったらbackgroundを付けられるんやで */
+}
+.page-title {
+    font-family: 'Philosopher', serif;
+    margin-bottom: 50px;
+    padding-top: 20px; /* Lesson14にて追加 */
+    text-align: center;
+}
+
+/* index.php
+---------------------*/
+.contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* overflow: hidden; なんでこの処理が必要なのかどうか忘れてしまいましたが影のところが映らなくなってしまうので、解除することにしました*/
+}
+
+.search-title .total-num {
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ページネーション
+---------------------*/
+.pagination {
+    position: relative;
+    overflow: hidden;
+}
+
+.pagination-list {
+    position: relative;
+    left: 50%;
+    float: left;
+    padding-left: 0;
+    list-style: none;
+}
+
+.pagination .list-item {
+    position: relative;
+    left: -50%;
+    float: left;
+    margin-right: 5px;
+}
+
+.pagination .list-item:last-child {
+    margin-right: 0;
+}
+
+.pagination .list-item a {
+    display: block;
+    padding: 5px 10px;
+    background: #eee;
+    color: black;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+.pagination .list-item.active a {
+    background: #333;
+    color: white;
+}
+.pagination .list-item a:hover {
+    background: #333;
+    color: white;
+}
+
+/* パネル
+---------------------*/
+.panel-list {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* grid-template-columns: 1fr 1fr; */
+}
+.panel-list .panel {
+    position: relative;
+    /* overflow: hidden; */
+    /* box-shadow: 0 0 8px gray; */
+    transition: 0.3s;
+}
+.panel-list .panel .panel-head img {
+    box-shadow: 0 0 8px grey;
+}
+.panel:hover {
+    opacity: 0.65;
+}
+.panel-body {
+    position: absolute;
+    width: 100%;    /* 当たり前だけど中央に揃えるために利用したものですね */
+    /* top: calc(78% - 0.5em); */
+    bottom: 15%;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    background: #0000007B 0% 0% no-repeat padding-box;
+    color: #fff;
+}
+
+
+/* サイドバー
+---------------------*/
+.sidebar {
+    box-sizing: border-box;
+    margin-right: 20px;
+    padding: 15px;
+    /* min-height: 600px;
+    width: 200px; */
+    width: 22%;
+    background: #f6f5f4;
+}
+.sidebar .title {
+    font-size: 16px;
+    font-weight: normal;
+}
+.sidebar .selectbox {
+    position: relative;
+}
+.sidebar select {
+    padding: 10px;
+    width: 100%;
+    border-color: #ccc;
+    border-radius: 0;
+    font-size: 14px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.sidebar .icn_select:after {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #333;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 7px solid transparent;
+    content: "";
+}
+.sidebar a {
+    display: block;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.sidebar_prof {
+    width: 35%;
+    /* margin-top: 80px; */
+    /* box-shadow: 0 0 8px gray; */
+}
+.search-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    background: #f6f5f4;
+    /* width: 100%; */
+}
+.icon {
+    /* width: 100%;
+    margin: 0 auto; */
+}
+.icon img {
+    display: block;
+    width: 40%;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    border-radius: 50%;
+    margin-bottom: 0px;
+}
+.icon p {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+/* フォーム
+---------------------*/
+label {
+    display: block;
+}
+label.err input, label.err select{
+    background: #f7dcd9;
+  }
+input[type="text"], input[type="password"], input[type="number"], .form select, textarea {
+    display: block; /* タイトルと入力フォームのところが通常は横並びになっているが、blockとすることで横いっぱいに範囲が取られるので、開業しているみたいになったりする widthで100%やっているから意味が無かったりするかもしれないけどね！！ */
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+    height: 60px;
+    border: none;
+    background: #f6f5f5;
+    font-size: 18px;
+}
+input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+    background: #f6f5f5;
+    vertical-align: middle;
+}
+input[type="submit"] {
+    margin: 15px 0;
+    padding: 15px 30px;
+    width: 100%;
+    border: none;
+    background: #333;
+    color: white;
+    font-size: 14px;
+    border-radius: 34px;
+}
+
+.form-container {
+    margin: 0 auto;
+}
+.page-1colum .form-container{
+    margin: 80px auto;
+}
+.form {
+    margin: 0 auto;
+    padding: 30px;
+    width: 400px;
+    width: 40.817%;
+    border: 5px solid #f1f1f1;
+    /* border-radius: 10%; */
+}
+.form .label-require {
+    margin-left: 5px;
+    background: #fe8a8b;
+    font-size: 14px;
+    padding: 3px 5px;
+    color: white;
+    vertical-align: bottom; /* 意味ないかもしれないです */
+}
+.passEdit .form {
+    padding: 50px 180px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.profEdit .form {
+    padding: 50px 140px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form .title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.form .area-msg{
+    padding: 0 0 15px 0;
+    color: red;
+}
+
+.form .area-drop {
+    margin-bottom: 15px;
+    width: 50%;
+    /* padding-top: 25%; */
+    /* height: 140px; */
+    background: #f6f5f4;
+    color: #ccc;
+    text-align: center;
+    /* line-height: 210px; */
+    padding-top: 15.5%;
+    padding-bottom: 15.5%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.form .input-file{
+    opacity:0;
+    width:100%;
+    /* height:140px; */
+    position:absolute;
+    top:0;
+    left:0;
+    z-index: 2; /* 必ずz-indexをつけないと登録画像を変更する際にドラッグ＆ドロップできなくなる*/
+}
+
+.form .prev-img{
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.form .counter-text {
+    text-align: right;
+}
+
+/* テーブル
+---------------------*/
+.list-table {
+    margin-bottom: 30px;
+}
+.list-table > table {
+    width: 100%;
+    border-spacing: 0 5px;
+}
+.list-table th,
+.list-table td {
+    padding: 5px;
+}
+.list-table th {
+    text-align: left;   /* これええな */
+}
+.list-table > .table > tbody td {
+    border-right: none;
+    background: #f6f5f4;
+}
+.list-table > .table > tbody td a {
+    /* color: #6CBAD8; */
+}
+
+
+/* 店舗詳細ページ
+---------------------*/
+.badge {
+    padding: 5px 10px;  
+    background: #7acee6;
+    color: white;
+    font-size: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+    position: relative;
+    top: -4px;
+}
+.shop_title {
+    font-size: 28px;
+    padding: 10px 0;
+}
+.shop-detail-title {
+    position: relative;
+    /* display: inline-block; */
+}
+.shop-detail-title::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    /* display: inline-block; */
+    width: 60px;
+    height: 5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #6CBAD8;
+    
+    border-radius: 2px;
+}
+.shop_title h2 {
+    font-size: 28px;
+    display: inline-block;
+}
+.shop-img-container {
+    margin-bottom: 150px;
+}
+.shop-img-container .img-main {
+    padding-right: 15px;
+    box-sizing: border-box;
+    /* width: 750px; */
+    width: 75%;
+}
+.shop-img-container .img-sub {
+    background: #f6f5f4;
+    padding: 15px;
+    box-sizing: border-box;
+    /* width: 230px; */
+    width: 25%;
+}
+.shop-img-container .img-sub:hover {
+    cursor: pointer;
+}
+.shop_img {
+    width: 50%;
+    margin-bottom: 10px;
+}
+.info {
+    width: 40%;
+}
+.info h2 {
+    margin: 0;
+}
+.icn-like {
+    color: #ddd;
+    float: right;
+    padding-top: 28px;
+}
+.panel-list-takeout_pic {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.panel-list-takeout_pic img {
+    margin: 0 auto; /* １枚だけの画像の表示のときに真ん中に表示されずに左寄せで表示されてしまっていたので、真ん中に表示するようにしました */
+}
+/* 店舗詳細ページのコメントを投稿するエリア */
+.send-msg {
+    padding: 15px;
+    height: 150px;
+}
+.show-msg {
+    height: 200px;
+    height: 140px;
+    font-size: 16px;
+}
+/* コメントを表示しているエリア */
+.comment {
+    background: #f6f5f4;
+    box-shadow: 0 0 4px gray;
+}
+.comment-head {
+}
+.avatar {
+    display: flex;
+    justify-content: space-between;
+}
+.avatar p {
+    /* padding-left: 30px;
+    padding-top: 30px; */
+    /* display: inline-block; */
+    width: 100%;
+    padding-left: 20px;
+    /* padding-top: 15px; */
+    margin-bottom: 0;
+    /* padding-bottom: 10px; */
+    vertical-align: middle;
+}
+.avatar img {
+    margin-right: 10px;
+    /* height: 80px; */
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.date {
+    padding-left: 20px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    vertical-align: middle;
+    float: right;
+    margin-right: 30px;
+}
+.comment-area {
+    margin-top: 50px;
+}
+.comment-body {
+    margin-bottom: 30px;
+}
+.comment-body p {
+    margin-left: 60px;
+    margin-right: 20px;
+    /* 下記の部分は投稿日時を上に表示するときには付けてね♪ */
+    /* padding-bottom: 30px; */
+}
+
+/* 店舗登録ページ
+---------------------*/
+.shop_form {
+    /* padding: 100px; */
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+textarea[name="takeout_info"] {
+    height: 200px;
+}
+textarea[name="shop_info"] {
+    height: 200px;
+}
+.takeout_info {
+    height: 300px;
+}
+.takeout-images {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
+}
+.form .area-drop-shop {
+    padding-top: 30%;
+    padding-bottom: 30%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* マイページ */
+.mypage-title {
+    padding-left: 5px;
+    border-left: 8px solid #6CBAD8;
+    position: relative;
+}
+
+/* ページ上部へ移動 */
+#page_top {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background: #3f98ef;
+    opacity: 0.6;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+#page_top a {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+  }
+#page_top a::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -5px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+  }
+#page_top:hover {
+    opacity: 1;
+}
+/* /ページ上部へ移動 */
+
+
+@media screen and (max-width: 768px) {
+    .page-2colum #main {
+        width: 100%;
+        margin : 0 auto;
+    }
+
+    /* ヘッダー
+    ---------------------*/
+    .main-nav {
+        display: initial;
+    }
+    .page-header {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .page-header h1 {
+        margin: 0.8rem;
+    }
+    .page-header nav {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        width: 75%;
+        height: 100%;
+        padding-top: 50px;
+        /* background:#333; */
+        background: rgba(3, 3, 3, 0.8);
+        font-size: 16px;
+        box-sizing: border-box;
+        z-index: 2
+    }
+    .page-header nav ul li {
+        display:block;
+        padding: 25px 28px;
+    }
+    .page-header nav ul li a {
+        text-decoration: none;
+        color: #ddd
+    }
+    .page-header .btn-gnavi {
+        position: fixed;
+        top: 13px;
+        right: 20px;
+        width: 30px;
+        height: 24px;
+        z-index: 3;
+        box-sizing: border-box;
+        cursor: pointer;
+        -webkit-transition: all 400ms;
+        transition: all 400ms
+    }
+     
+    .page-header .btn-gnavi span {
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        background: #666;
+        border-radius: 10px;
+        -webkit-transition: all 400ms;
+        transition: all 400ms
+    }
+     
+    .page-header .btn-gnavi span:nth-child(1) {
+        top: 0
+    }
+     
+    .page-header .btn-gnavi span:nth-child(2) {
+        top: 10px
+    }
+     
+    .page-header .btn-gnavi span:nth-child(3) {
+        top: 20px
+    }
+     
+    .page-header .btn-gnavi.open {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg)
+    }
+     
+    .page-header .btn-gnavi.open span {
+        background: #fff
+    }
+     
+    .page-header .btn-gnavi.open span {
+        width: 24px;
+    }
+    .page-header .contents section p {
+        position: absolute;
+        top: 50%;
+        width: 30%;
+        line-height: 1.4;
+        font-size: 20px;
+        color: #fff;
+        text-shadow: 0 0 6px #666
+    }
+     
+    .page-header .contents section:nth-child(odd) p {
+        left: 10%
+    }
+     
+    .page-header .contents section:nth-child(even) p {
+        right: 10%
+    }
+
+    .page-header > h1 > a {
+        color: #333;
+        font-size: 20px;
+    }
+
+    .open + span {
+        color: #fff;
+    }
+    .header-smartphone {
+        display: block;
+    }
+    
+    /* index.php
+    ---------------------*/
+    .contents {
+        display: block; /* dispaly: flexを解除しました */
+    }
+    .search-title {
+        display: block;
+        margin-top: 30px;
+    }
+
+    /* パネル
+    ---------------------*/
+    .panel-list {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: 1fr 1fr;
+    }
+    .panel-list .panel {
+        box-shadow: initial;
+    }
+    .panel-list .panel .panel-head img {
+        box-shadow: 0 0 5px grey;
+    }
+    .panel:hover {
+        opacity: initial;
+    }
+    .panel-body p {
+        margin: 0;
+        font-size: 12px;
+    }
+    .panel-body {
+        position: initial;
+        width: 100%;    /* 当たり前だけど中央に揃えるために利用したものですね */
+        /* top: calc(78% - 0.5em); */
+        bottom: 15%;
+        text-align: center;
+        background: initial;
+        /* background: #0000007B 0% 0% no-repeat padding-box; */
+        color: #333;
+    }
+
+    /* サイドバー
+    ---------------------*/
+    .passEdit .sidebar {
+        display: none;
+    }
+    .sidebar_prof {
+        display: none;
+    }
+    .sidebar {
+        width: 75%;
+        margin: 0 auto;
+    }
+    .sp-sidebar {
+        display: none;
+    }
+
+    /* フォーム
+    ---------------------*/
+    .passEdit .form {
+        padding: 30px;
+        /* width: 100%; */
+        /* box-sizing: border-box; */
+    }
+    .profEdit .form {
+        padding: 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    input[type="text"], input[type="password"], input[type="number"], .form select, textarea {
+        font-size: 14px;
+    }
+    .form {
+        width: initial;
+    }
+    .form .area-drop {
+        width: 100%;    /* プロフィール編集のプロフ画像の投稿でそうしました */
+    }
+    .form .area-drop {
+        padding-top: 30%;
+        padding-bottom: 30%;
+    }
+
+    /* テーブル
+    ---------------------*/
+    .list-table > .table > tbody td {
+        font-size: 14px;
+    }
+    .list-table th {
+        font-size: 14px;
+    }
+    .list-table h2 {
+        font-size: 20px;
+    }
+
+    /* 店舗詳細ページ
+    ---------------------*/
+    .shop_title {
+        /* display: flex; */
+        /* justify-content: space-between; */
+        
+    }
+    .shop_title h2 {
+        font-size: 24px;
+        display: block;
+        text-align: center;
+    }
+    .shop_img {
+        width: 100%;
+    }
+    .info {
+        width: 100%;
+    }
+    .shop-img-container {
+        margin-bottom: 100px;
+    }
+    .panel-list-takeout_pic {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        /* grid-template-columns: 1fr 1fr; */
+    }
+    /* 店舗詳細ページのコメントを投稿するエリア */
+    .send-msg {
+        font-size: 14px;
+    }
+    /* コメントを表示しているエリア */
+    .avatar p {
+        font-size: 14px;
+    }
+    .avatar img {
+        width: 40px;
+        height: 40px;
+    }
+    .comment-body p {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 14px;
+        /* 下記の部分は投稿日時を上に表示するときには付けてね♪ */
+        /* padding-bottom: 30px; */
+    }
+    .comment-body p span {
+        font-size: 14px;
+    }
+    .icn-like {
+        padding-top: 5px;
+    }
+    /* マイページ */
+    .mypage-title {
+        font-size: 20px;
+        padding-left: 5px;
+        border-left: 8px solid #6CBAD8;
+        /* border-bottom: 1px solid #6CBAD8; */
+        position: relative;
+    }
+    /* .mypage-title::after {
+        position: absolute;
+        content: " ";
+        display: block;
+        border-bottom: solid 1px #A4A9CF;
+        bottom: -1px;
+        left: -1px;
+        width: 60%;
+    } */
+}
+@media screen and (max-width: 370px) {
+    /* ヘッダー
+    ---------------------*/
+    .page-header nav ul li {
+        display:block;
+        padding: 15px 28px
+    }
+}
